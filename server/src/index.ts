@@ -49,7 +49,7 @@ app.get("/api/info", async (req: Request, res: Response) => {
 
 app.get('/api/listings', async (req: Request, res: Response) => {
     try {
-        const limit = req.query.limit as string;
+        const limit = parseInt(req.query.limit as string || "10");
 
         const response = await fetch(
             `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=${limit}&convert=EUR`,
@@ -59,8 +59,9 @@ app.get('/api/listings', async (req: Request, res: Response) => {
                 },
             },
         );
-
+        
         const result = await response.json();
+        // console.log(result);
         res.status(200).json({
             success: true,
             data: result.data,

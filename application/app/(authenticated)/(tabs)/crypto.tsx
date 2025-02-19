@@ -15,7 +15,7 @@ export default function Crypto() {
 
     const currencies = useQuery({
         queryKey: ["listings"],
-        queryFn: () => fetch("/api/listings").then((res) => res.json()),
+        queryFn: () => fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/listings`).then((res) => res.json()),
     });
 
     const ids = currencies.data
@@ -24,7 +24,7 @@ export default function Crypto() {
 
     const { data } = useQuery({
         queryKey: ["info", ids],
-        queryFn: () => fetch(`/api/info?ids=${ids}`).then((res) => res.json()),
+        queryFn: () => fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/info?ids=${ids}`).then((res) => res.json()),
         enabled: !!ids,
     });
 

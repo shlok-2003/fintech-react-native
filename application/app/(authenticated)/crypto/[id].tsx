@@ -56,7 +56,7 @@ const Page = () => {
     const { data: tickers } = useQuery({
         queryKey: ["tickers"],
         queryFn: async (): Promise<any[]> =>
-            fetch(`/api/tickers`).then((res) => res.json()),
+            fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/tickers`).then((res) => res.json()),
     });
 
     const animatedText = useAnimatedProps(() => {
