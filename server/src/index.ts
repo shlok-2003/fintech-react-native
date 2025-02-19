@@ -16,8 +16,12 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/health", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello World");
+});
+
+app.get("/health", (req, res) => {
+    res.send("Activated");
 });
 
 app.get("/api/info", async (req: Request, res: Response) => {
@@ -61,7 +65,6 @@ app.get('/api/listings', async (req: Request, res: Response) => {
         );
         
         const result = await response.json();
-        // console.log(result);
         res.status(200).json({
             success: true,
             data: result.data,

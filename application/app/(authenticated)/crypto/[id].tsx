@@ -46,7 +46,7 @@ const Page = () => {
     const { data } = useQuery({
         queryKey: ["info", id],
         queryFn: async () => {
-            const info = await fetch(`/api/info?ids=${id}`).then((res) =>
+            const info = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/info?ids=${id}`).then((res) =>
                 res.json(),
             );
             return info[+id];
