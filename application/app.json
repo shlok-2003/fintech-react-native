@@ -21,7 +21,11 @@
                 "foregroundImage": "./assets/images/icon.png",
                 "backgroundColor": "#ffffff"
             },
-            "package": "com.shlok_03.fintech"
+            "package": "com.shlok_03.fintech",
+            "permissions": [
+                "android.permission.USE_BIOMETRIC",
+                "android.permission.USE_FINGERPRINT"
+            ]
         },
         "web": {
             "bundler": "metro",
@@ -48,6 +52,14 @@
         ],
         "experiments": {
             "typedRoutes": true
+        },
+        "extra": {
+            "router": {
+                "origin": false
+            },
+            "eas": {
+                "projectId": "a6ff2bca-4c6a-4d27-8362-57a5a2810e5b"
+            }
         }
     }
 }

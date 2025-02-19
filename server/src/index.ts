@@ -4,7 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 
-import { data } from './data/index'
+import { data } from "./data/index";
 
 dotenv.config();
 const PORT: number = parseInt(process.env.PORT! || "4001");
@@ -51,9 +51,9 @@ app.get("/api/info", async (req: Request, res: Response) => {
     }
 });
 
-app.get('/api/listings', async (req: Request, res: Response) => {
+app.get("/api/listings", async (req: Request, res: Response) => {
     try {
-        const limit = parseInt(req.query.limit as string || "10");
+        const limit = parseInt((req.query.limit as string) || "10");
 
         const response = await fetch(
             `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=${limit}&convert=EUR`,
@@ -63,14 +63,13 @@ app.get('/api/listings', async (req: Request, res: Response) => {
                 },
             },
         );
-        
+
         const result = await response.json();
         res.status(200).json({
             success: true,
             data: result.data,
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
         res.status(500).json({
             success: false,
@@ -79,7 +78,7 @@ app.get('/api/listings', async (req: Request, res: Response) => {
     }
 });
 
-app.get('/api/tickers', async (req: Request, res: Response) => {
+app.get("/api/tickers", async (req: Request, res: Response) => {
     try {
         res.status(200).json({
             success: true,

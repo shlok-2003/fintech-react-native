@@ -46,9 +46,9 @@ const Page = () => {
     const { data } = useQuery({
         queryKey: ["info", id],
         queryFn: async () => {
-            const info = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/info?ids=${id}`).then((res) =>
-                res.json(),
-            );
+            const info = await fetch(
+                `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/info?ids=${id}`,
+            ).then((res) => res.json());
             return info[+id];
         },
     });
@@ -56,7 +56,9 @@ const Page = () => {
     const { data: tickers } = useQuery({
         queryKey: ["tickers"],
         queryFn: async (): Promise<any[]> =>
-            fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/tickers`).then((res) => res.json()),
+            fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/tickers`).then(
+                (res) => res.json(),
+            ),
     });
 
     const animatedText = useAnimatedProps(() => {

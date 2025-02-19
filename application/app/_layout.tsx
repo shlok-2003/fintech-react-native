@@ -52,7 +52,7 @@ const InitialLayout = () => {
 
         if (isSignedIn && !inAuthGroup) {
             router.push("/home");
-        } else if (!isSignedIn) {
+        } else if (!isSignedIn && inAuthGroup) {
             router.replace("/");
         }
     }, [isSignedIn, isLoaded, router, segments, loaded]);
